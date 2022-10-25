@@ -25,12 +25,20 @@ public class Login {
     public void user_enters_password_and_hits_enter_key(String string) {
         pageDriver.passwordBox.sendKeys(string+Keys.ENTER);
     }
-
     @Then("user should be on the homepage")
     public void user_should_be_on_the_homepage() {
         String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "Dashboard - Seamlessly";
         Assert.assertEquals(expectedTitle, actualTitle);
+        Driver.closeDriver();
+    }
+    @When("user enters password {string}")
+    public void user_enters_password(String string) {
+        pageDriver.passwordBox.sendKeys(string);
+    }
+    @When("user clicks Login button")
+    public void user_clicks_login_button() {
+        pageDriver.loginButton.click();
     }
 
 }

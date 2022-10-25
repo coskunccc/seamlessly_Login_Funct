@@ -16,5 +16,7 @@ public class Login_Pages {
     @FindBy(id = "password")
     public WebElement passwordBox;
 
+    @FindBy(css = "input[id='submit-form']")
+    public WebElement loginButton;
 
 }
