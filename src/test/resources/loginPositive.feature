@@ -5,12 +5,14 @@ Feature: Seamlessly login functionality
 
   Background:
     Given user is on the login page
+
  @SEAMLES-2399
   Scenario: Login with valid credentials and hitting Enter key
     When user enters username "Employee101"
     And user enters password "Employee123" and hits Enter key
     Then user should be on the homepage
 
+ @SEAMLES-2400
   Scenario Outline: Login with valid credentials and clicking Login button
     When user enters username "<username>"
     And user enters password "<password>"
