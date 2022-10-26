@@ -1,5 +1,5 @@
 @SEAMLES-2386
-Feature: Seamlessly login functionality
+Feature: Seamlessly login functionality (positive scenarios)
   User Story:
   As a user I should be able to login
 

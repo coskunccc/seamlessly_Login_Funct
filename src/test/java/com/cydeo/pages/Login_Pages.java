@@ -19,4 +19,7 @@ public class Login_Pages {
     @FindBy(css = "input[id='submit-form']")
     public WebElement loginButton;
 
+    @FindBy(css = "p[class$='warning wrongPasswordMsg']")
+    public WebElement wrongUsernameMessage;
+
 }
