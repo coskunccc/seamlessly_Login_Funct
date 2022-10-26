@@ -7,7 +7,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginSteps {
 
@@ -61,11 +68,37 @@ public class LoginSteps {
         // If login happens:
         String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "Dashboard - Seamlessly";
-        if (actualTitle.equals(expectedTitle)){
+        if (actualTitle.equals(expectedTitle)) {
             pageDriver.idButton.click();
             pageDriver.logoutButton.click();
         }
         //Driver.closeDriver();
     }
 
+    @When("user leaves {string} or {string} empty")
+    public void user_leaves_or_empty(String string, String string2) {
+        pageDriver.userInputBox.sendKeys(string);
+        pageDriver.passwordBox.sendKeys(string2);
+    }
+
+    @Then("user should see pop-up message {string}")
+    public void userShouldSeePopUpMessage(String arg0) {
+        JavascriptExecutor js=(JavascriptExecutor)Driver.getDriver();
+        String actualMessage= (String) js.executeScript("return arguments[0]" +
+                ".validationMessage",pageDriver.userInputBox);
+        String actualMessage2= (String) js.executeScript("return arguments[0]" +
+                ".validationMessage",pageDriver.passwordBox);
+
+        Assert.assertTrue(arg0.equals(actualMessage)|| arg0.equals(actualMessage2));
+
+
+        // If login happens:
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Dashboard - Seamlessly";
+        if (actualTitle.equals(expectedTitle)) {
+            pageDriver.idButton.click();
+            pageDriver.logoutButton.click();
+        }
+
+    }
 }
