@@ -54,15 +54,18 @@ public class LoginSteps {
 
     @Then("user should see {string} message")
     public void user_should_see_message(String string) {
+
+        String actualMessage = pageDriver.wrongUsernameMessage.getText();
+        Assert.assertEquals(string, actualMessage);
+
+        // If login happens:
         String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "Dashboard - Seamlessly";
         if (actualTitle.equals(expectedTitle)){
             pageDriver.idButton.click();
             pageDriver.logoutButton.click();
         }
-        String actualMessage = pageDriver.wrongUsernameMessage.getText();
-        Assert.assertEquals(string, actualMessage);
-        Driver.closeDriver();
+        //Driver.closeDriver();
     }
 
 }
