@@ -57,7 +57,8 @@ public class LoginSteps {
         String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "Dashboard - Seamlessly";
         if (actualTitle.equals(expectedTitle)){
-            Driver.closeDriver();
+            pageDriver.idButton.click();
+            pageDriver.logoutButton.click();
         }
         String actualMessage = pageDriver.wrongUsernameMessage.getText();
         Assert.assertEquals(string, actualMessage);

@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources",
         glue="com/cydeo/steps",
         dryRun = false,
-        tags = ""
+        tags = "@wip"
 
 )
 

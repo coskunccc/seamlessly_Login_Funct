@@ -22,4 +22,10 @@ public class Login_Pages {
     @FindBy(css = "p[class$='warning wrongPasswordMsg']")
     public WebElement wrongUsernameMessage;
 
+    @FindBy(id="expand")
+    public WebElement idButton;
+
+    @FindBy(linkText = "Log out")
+    public WebElement logoutButton;
+
 }
