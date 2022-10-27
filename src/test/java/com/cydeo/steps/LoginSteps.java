@@ -3,6 +3,7 @@ package com.cydeo.steps;
 import com.cydeo.pages.Login_Pages;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -91,7 +92,6 @@ public class LoginSteps {
 
         Assert.assertTrue(arg0.equals(actualMessage)|| arg0.equals(actualMessage2));
 
-
         // If login happens:
         String actualTitle = Driver.getDriver().getTitle();
         String expectedTitle = "Dashboard - Seamlessly";
@@ -101,4 +101,26 @@ public class LoginSteps {
         }
 
     }
+
+    @Then("verify that password is masked by dots")
+    public void verify_that_password_is_masked_by_dots() {
+        String passwordBoxInputType=pageDriver.passwordBox.getAttribute("type");
+        // if input type is "password" it is masked and shown in dots,
+        // if input type is "text" password is visible
+        String expectedInputType="password";
+        Assert.assertEquals(expectedInputType,passwordBoxInputType);
+    }
+
+    @And("user clicks password box eye")
+    public void userClicksPasswordBoxEye() {
+        pageDriver.passwordBoxEye.click();
+    }
+
+    @Then("verify that password seen explicitly")
+    public void verifyThatPasswordSeenExplicitly() {
+        String passwordBoxInputType=pageDriver.passwordBox.getAttribute("type");
+        // if input type is "password" it is masked and shown in dots,
+        // if input type is "text" password is visible
+        String expectedInputType="text";
+        Assert.assertEquals(expectedInputType,passwordBoxInputType);    }
 }
