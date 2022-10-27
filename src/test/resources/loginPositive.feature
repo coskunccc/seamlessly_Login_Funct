@@ -25,5 +25,5 @@ Feature: Seamlessly login functionality (positive scenarios)
       | Employee102 | Employee123 |
       | Employee103 | Employee123 |
       | Employee104 | Employee123 |
-      | Employee105 | Employee123 |
+
 

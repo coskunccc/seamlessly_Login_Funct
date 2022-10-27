@@ -123,4 +123,32 @@ public class LoginSteps {
         // if input type is "text" password is visible
         String expectedInputType="text";
         Assert.assertEquals(expectedInputType,passwordBoxInputType);    }
+
+
+    @Then("verify that placeholders like {string} and {string} are on input boxes")
+    public void verifyThatPlaceholdersLikeAndAreOnInputBoxes(String arg0, String arg1) {
+
+        String usernamePlaceholder=pageDriver.userInputBox.getAttribute("placeholder");
+        Assert.assertTrue(usernamePlaceholder.contains(arg0));
+
+        String passwordPlaceholder=pageDriver.passwordBox.getAttribute("placeholder");
+        Assert.assertTrue(passwordPlaceholder.contains(arg1));
+    }
+
+    @When("user sees {string} link")
+    public void userSeesLink(String arg0) {
+        String forgotPassword=pageDriver.forgotPasswordButton.getText();
+        Assert.assertEquals(arg0,forgotPassword);
+    }
+
+    @And("clicks Forgot password link")
+    public void clicksForgotPasswordLink() {
+        pageDriver.forgotPasswordButton.click();
+    }
+
+    @Then("user gets new page and sees {string} button")
+    public void userGetsNewPageAndSeesButton(String arg0) {
+        String resetPassword=pageDriver.resetPassword.getAttribute("value");
+        Assert.assertEquals(arg0,resetPassword);
+    }
 }

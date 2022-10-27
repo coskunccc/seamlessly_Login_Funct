@@ -32,4 +32,10 @@ public class Login_Pages {
     @FindBy(linkText = "Log out")
     public WebElement logoutButton;
 
+    @FindBy(id = "lost-password")
+    public WebElement forgotPasswordButton;
+
+    @FindBy(id = "reset-password-submit")
+    public WebElement resetPassword;
+
 }
